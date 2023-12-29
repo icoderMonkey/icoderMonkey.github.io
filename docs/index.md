@@ -3,23 +3,20 @@
 layout: home
 
 hero:
-  name: "My Awesome Project"
-  text: "A VitePress Site"
-  tagline: My great project tagline
+  name: "My Awesome Plan"
+  text: "Full Stack"
+  tagline: Step by step guide to becoming a modern full stack developer in 2024
   actions:
     - theme: brand
-      text: Markdown Examples
-      link: /markdown-examples
-    - theme: alt
-      text: API Examples
-      link: /api-examples
+      text: Roadmaps
+      link: /roadmaps
 
 features:
-  - title: Feature A
-    details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
-  - title: Feature B
-    details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
-  - title: Feature C
-    details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
+  - title: Plan A
+    details: How to become a front end developer
+  - title: Plan B
+    details: How to become a backend developer
+  - title: Plan C
+    details: How to become a full stack developer
 ---
 

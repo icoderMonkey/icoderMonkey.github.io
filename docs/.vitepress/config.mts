@@ -9,14 +9,14 @@ export default defineConfig({
 
     // https://vitepress.dev/reference/default-theme-config
     nav: [
-      { text: "主页", link: "/" },
-      { text: "学习线路", link: "/roadmaps" },
+      { text: "home", link: "/" },
+      { text: "roadmaps", link: "/roadmaps" },
       // { text: "Examples", link: "/markdown-examples" },
     ],
 
     sidebar: [
       {
-        text: "学习线路",
+        text: "roadmaps",
         items: [
           // { text: "学习线路", link: "/roadmaps" },
           // { text: "Markdown Examples", link: "/markdown-examples" },

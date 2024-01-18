@@ -10,7 +10,6 @@ export default defineConfig({
     // https://vitepress.dev/reference/default-theme-config
     nav: [
       { text: "主页", link: "/" },
-      // { text: "知识图谱", link: "/roadmaps" },
       { text: "学习笔记", items: [{ text: "typescript", link: "/notes/typescript/intro" }] },
     ],
 

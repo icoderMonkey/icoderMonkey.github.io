@@ -9,19 +9,15 @@ export default defineConfig({
 
     // https://vitepress.dev/reference/default-theme-config
     nav: [
-      { text: "home", link: "/" },
-      { text: "roadmaps", link: "/roadmaps" },
-      // { text: "Examples", link: "/markdown-examples" },
+      { text: "主页", link: "/" },
+      // { text: "知识图谱", link: "/roadmaps" },
+      { text: "学习笔记", items: [{ text: "typescript", link: "/notes/typescript/intro" }] },
     ],
 
     sidebar: [
       {
-        text: "roadmaps",
-        items: [
-          // { text: "学习线路", link: "/roadmaps" },
-          // { text: "Markdown Examples", link: "/markdown-examples" },
-          // { text: "Markdown Examples", link: "/markdown-examples" },
-        ],
+        text: "typescript 学习笔记",
+        items: [{ text: "介绍", link: "/notes/typescript/intro" }],
       },
     ],
 
@@ -38,4 +34,8 @@ export default defineConfig({
   },
 
   lastUpdated: true,
+
+  markdown: {
+    lineNumbers: true
+  }
 });

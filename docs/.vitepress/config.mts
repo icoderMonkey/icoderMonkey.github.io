@@ -19,7 +19,7 @@ export default defineConfig({
 
     sidebar: [
       {
-        text: "TypeScipt",
+        text: "TypeScript",
         items: [{ text: "介绍", link: "/notes/typescript/intro" }],
       },
     ],

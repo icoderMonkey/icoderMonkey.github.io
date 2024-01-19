@@ -1,8 +1,8 @@
 # TypeScript 学习笔记
 
-## 介绍
+<!-- ## 介绍
 
-今天是 2024 年 1 月 18 日，刚刚花了一周时间，学习了阮一峰老师所写的 [《TypeScript 教程》](https://wangdoc.com/typescript/)，收益巨大，因此写下这篇笔记，用于记录学习点滴。
+今天是 2024 年 1 月 18 日，刚刚花了一周时间，学习了阮一峰老师所写的 [《TypeScript 教程》](https://wangdoc.com/typescript/)，收益巨大，因此写下这篇笔记，用于记录学习点滴。 -->
 
 ## 概述
 

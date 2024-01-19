@@ -20,7 +20,10 @@ export default defineConfig({
     sidebar: [
       {
         text: "TypeScript",
-        items: [{ text: "介绍", link: "/notes/typescript/intro" }],
+        items: [
+          { text: "介绍", link: "/notes/typescript/intro" },
+          { text: "环境搭建", link: "/notes/typescript/setup" },
+        ],
       },
     ],
 

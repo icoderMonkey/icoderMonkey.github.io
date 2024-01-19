@@ -3,20 +3,20 @@
 layout: home
 
 hero:
-  name: "My Awesome Plan"
-  text: "Full Stack"
-  tagline: Step by step guide to becoming a modern full stack developer in 2024
+  name: "TypeScript"
+  text: "学习小册"
+  tagline: TypeScrit 核心知识学习
   actions:
     - theme: brand
-      text: Roadmaps
-      link: /roadmaps
+      text: 快速开始
+      link: /notes/typescript/intro
 
 features:
-  - title: Plan A
-    details: How to become a front end developer
-  - title: Plan B
-    details: How to become a backend developer
-  - title: Plan C
-    details: How to become a full stack developer
+  - title: 基础知识
+    details: 了解并进行 TypeScript 的世界
+  - title: 项目驱动
+    details: 基于实战案例强化核心概念
+  - title: 技术进阶
+    details: 体操类型通关演练
 ---
 

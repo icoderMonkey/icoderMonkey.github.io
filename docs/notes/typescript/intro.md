@@ -1,12 +1,24 @@
-# TypeScript 学习笔记
+# TypeScript 学习小册
 
 ## 概述
 
-**TypeScript**（简称 TS）是一种由微软开发的开源编程语言。它是 **JavaScript** 的超集，在 **JavaScript** 基础上添加了一些额外的功能和语法，并引入了更强大、更严格的类型系统，用于实现静态类型检查。
+**TypeScript**（泛指“类型脚本”）是一种由微软开发的开源编程语言。它是 **JavaScript** 的超集，意味着任何有效的 **JavaScript** 代码都是有效的 **TypeScript** 代码，但 **TypeScript** 在其基础上添加了一些额外的功能和语法，主要是静态类型检查
+
+## 特点
+
+**静态类型检查**： **TypeScript** 引入了静态类型系统，允许开发者在编写代码时定义变量的类型。这样可以在编译阶段捕获一些潜在的错误，提高代码质量和可维护性。
+
+**面向对象编程支持**： **TypeScript** 支持面向对象编程的特性，包括类、接口、继承、泛型等。这些特性有助于更好地组织和抽象代码。
+
+**编译成 JavaScript**： **TypeScript** 代码可以通过编译器转换成标准的 **JavaScript** 代码，从而可以在任何支持 **JavaScript** 的环境中运行。
+
+**工具支持**： **TypeScript** 提供了丰富的工具支持，包括编辑器插件、语法高亮、智能代码补全等，以提高开发效率。
+
+**ECMAScript 标准的跟进**： **TypeScript** 的发展与 **ECMAScript**（**JavaScript** 的标准规范）密切相关，它通常会及时地跟进最新的 **ECMAScript** 版本，以确保与 **JavaScript** 生态系统保持兼容。
 
 ## 类型
 
-如果两个值具有某种相同的特征，就可以说，他们属于同一种类型（Type），如：
+如果两个值具有某种相同的特征，就可以说，他们属于同一种类型（Type）
 
 ```JavaScript
 // 在 JavaScript 中， firstName 和 lastName 都属于字符串类型

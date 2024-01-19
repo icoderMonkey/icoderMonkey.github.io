@@ -2,7 +2,7 @@
 
 ## 概述
 
-**TypeScript**（泛指“类型脚本”）是一种由微软开发的开源编程语言。它是 **JavaScript** 的超集，意味着任何有效的 **JavaScript** 代码都是有效的 **TypeScript** 代码，但 **TypeScript** 在其基础上添加了一些额外的功能和语法，主要是静态类型检查
+**TypeScript**（泛指“类型脚本”）是一种由微软开发的开源编程语言。它是 **JavaScript** 的超集，意味着任何有效的 **JavaScript** 代码都是有效的 **TypeScript** 代码，但 **TypeScript** 在其基础上添加了一些额外的功能和语法，主要是静态类型检查。
 
 ## 特点
 

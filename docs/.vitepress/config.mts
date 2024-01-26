@@ -24,6 +24,7 @@ export default defineConfig({
           { text: "介绍", link: "/notes/typescript/intro" },
           { text: "环境搭建", link: "/notes/typescript/setup" },
           { text: "编译器及配置文件", link: "/notes/typescript/tsc" },
+          { text: "类型基础", link: "/notes/typescript/base" },
         ],
       },
     ],

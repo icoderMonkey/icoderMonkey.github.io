@@ -14,9 +14,7 @@ let userName:string = "CoderMonkey"
 
 ![Bsase-Demo](../../assets/typescript/ts-base-demo.png)
 
-## 基本类型
-
-### string
+## string
 
 字符串类型
 
@@ -24,7 +22,7 @@ let userName:string = "CoderMonkey"
 const userName:string = "Coder"
 ```
 
-### number
+## number
 
 数字类型（整数、浮点数、非十进制数、非大整数）
 
@@ -33,7 +31,7 @@ const userAge:number = 18
 const pi:number = 3.14
 ```
 
-### bigint
+## bigint
 
 大整数类型
 
@@ -41,7 +39,7 @@ const pi:number = 3.14
 const bigInt:bigint = 100n
 ```
 
-### boolean
+## boolean
 
 布尔类型
 
@@ -49,7 +47,7 @@ const bigInt:bigint = 100n
 const isHandsome:boolean = true
 ```
 
-### symbol
+## symbol
 
 符号类型
 
@@ -57,7 +55,7 @@ const isHandsome:boolean = true
 const sy:symbol = Symbol()
 ```
 
-### null
+## null
 
 空值类型，表示该类型的值是一个空值，并且值为 **null**
 
@@ -65,7 +63,7 @@ const sy:symbol = Symbol()
 const n:null = null
 ```
 
-### undefined
+## undefined
 
 未定义类型，表示变量已经声明过，但变量的值还没有定义，如果类型为 **undefined**，那么值也就为 **undefined**
 
@@ -73,7 +71,7 @@ const n:null = null
 const u:undefined = undefined
 ```
 
-### object
+## object
 
 对象类型，包含了 **普通对象**、**数组**、**函数**、**Map**、**Set** 等
 
@@ -85,7 +83,7 @@ const obj4:object = new Set()
 const obj5:object = new Map()
 ```
 
-### any
+## any
 
 任意类型，表示没有类型限制或约束，可以为该类型的变量赋值任意类型的值
 
@@ -122,7 +120,7 @@ console.log(userAge.toFixed(2))
 
 因此，**any** 类型在 **TypeScript** 中也被称之为 **顶层类型（Top Type）**。 -->
 
-### unknown
+## unknown
 
 未知类型，可以理解为 **严格版的 any**，其主要作用就是为了解决 **any** 会产生的 **类型污染** 问题。
 
@@ -154,18 +152,18 @@ userAge = "99"
 
 这种情况下，可以使用 **typeof 操作符** 来对变量的类型进行 **缩小**，当明确该值的类型为 **string** 时，再去调用 **stirng** 本身的属性和方法那就不会有任何问题了，这一招（“类型缩小”）非常好使。
 
-### nerver
+## nerver
 
-### 值类型
+## 值类型
 
-### 联合类型
+## 联合类型
 
-### 交叉类型
+## 交叉类型
 
-### 类型推断
+## 类型推断
 
-### 类型兼容
+## 类型兼容
 
-### typeof
+## typeof
 
-### type
+## type

@@ -144,7 +144,7 @@ userAge = "99"
 
 ![ts-unknown-error-1](../../assets/typescript/ts-unknown-error-1.png)
 
-再者，**unknown** 类型只能进行比较运算，如：==、===、!=、!==、||、&&、?、! 等等
+再者，**unknown** 类型只能进行比较运算，如：==、===、!=、!==、||、&&、?、! 等等。
 
 ![ts-unknown-error-2](../../assets/typescript/ts-unknown-error-2.png)
 

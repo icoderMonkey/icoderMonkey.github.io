@@ -154,16 +154,156 @@ userAge = "99"
 
 ## never
 
+空类型，可以理解为永远不会出现的值。当你确定某件事情永远不会发生时，就可以使用 **never** 类型。
+
+主要使用场景如下：
+
+场景一：函数 **throwError** 会在内部抛出一个错误，这意味着该函数永远也不会有返回结果
+
+```TypeScript
+function throwError(): never {
+  throw new Error('error')
+}
+```
+
+场景二：函数 **keepProcessing** 内部 **while** 循环条件为 **true**，这意味着该循环会一直执行下去，永远也不会停止，也就永远不会返回结果
+
+```TypeScript
+function keepProcessing(): never {
+  while (true) {
+    console.log('keepProcessing')
+  }
+}
+```
+
+上面两个函数的共同特点就是内部执行永远走不到头，因此永远也不会有一个明确的返回结果，因此，可以用 **never** 来进行标识。
+
 ## 值类型
+
+一个具体的值，在 **TypeScript** 中就可以算做 **值类型**
+
+```TypeScript
+let userName:'CoderMonkey' = 'CoderMonkey'
+```
+
+变量 **userName** 的类型为值类型 **CoderMonkey**，这意味着 **userName** 的值只能为 **CoderMonkey**，不能是其他任意类型的值；在 **TypeScript** 环境中编码时会有非常明确的代码提示。
+
+这种情况就等同于通过 **const** 声明了 **userName** 变量，并且值为 **CoderMonkey**
+
+```TypeScript
+const userName = 'CoderMonkey'
+```
 
 ## 联合类型
 
+将多个不同的类型通过 **|** 联合起来组成一个新类型，这种方式称之为 **联合类型（Union Type）**
+
+```TypeScript
+let flag:boolean|1|0
+
+flag = true
+flag = false
+flag = 1
+flag = 0
+```
+
+变量 **flag** 可以用 **boolean** 来表示，也可以用 **0** 或 **1** 来表示，所以就可以使用 **联合类型**，只要值的类型符合其中某个类型即可。
+
+在处理 **联合类型** 的数据时，如果需要调用不同类型的属性或者方法，往往需要使用 **类型缩小**，即先判断值的类型，然后再去进行处理，前面也有提到。
+
 ## 交叉类型
+
+将多个不同的类型通过 **&** 联合起来组成一个新类型，这种方式称之为 **交叉类型（Intersection Type）**
+
+```TypeScript
+let fullName: { firstName: string } & { lastName: string } = { firstName: 'Coder', lastName: 'Monkey'}
+```
+
+变量 **fullName** 的类型实际上是一个 **object**，但这个 **object** 需要同时包含 **firstName** 属性和 **lastName** 属性，简单的说，利用 **&** 就是将多个对象类型进行 **合并** 成一个满足他们所有对象约束的新类型。
 
 ## 类型推断
 
+如果在声明变量时没有添加类型约束，**TypeScript** 会根据关键字和给定值的类型自动进行类型推断（鼠标悬浮到变量名上会弹出对应提示）。
+
+使用 **const** 声明，赋值为字符串的值被推断为 **值类型**。
+
+![ts-infer-const-base](../../assets/typescript/ts-infer-const-base.png)
+
+使用 **const** 声明，赋值为对象的值被推断为包含 **相应属性** 的 **对象类型**。
+
+![ts-infer-const-obj](../../assets/typescript/ts-infer-const-obj.png)
+
+在 **TypeScript** 中，**类型约束** 不是必须的，可以加，也可以不加，如果是一些基本类型的值比如 **string**、**number** 往往可以利用 **类型推断** 的机制省略不写；但如果是一些非常复杂的数据类型，**TypeScript** 就不能保证可以一定可以推断出正确的数据类型了，因此，在大型项目的复杂场景下，显示的 **类型约束** 就显得极为重要了。
+
 ## 类型兼容
+
+**类型兼容** 主要是指不同类型之间的兼容关系，通常会发生在类型的 **包含关系** 中。
+
+```TypeScript
+let firstName:'Coder' = 'Coder'
+let lastName:'Monkey' = 'Monkey'
+let fullName:string = 'CoderMonkey'
+```
+
+上面这段代码中，**firstName** 和 **lastName** 都被具体的 **值类型** 加以约束，意味着我只能赋值为这个具体的值，好比说写死了两个不能改变的 **常量**；而下面的 **fullName** 通过 **string** 进行约束，意味着只要值的类型满足 **string** 类型，就可以赋值给它，因此，**string** 相比于 **值类型** 而言具有更广的范围，简单的说，就是 **string** 类型包含了 **值为字符串的值类型**，**string** 是 **值为字符串的值类型** 的父类型，反之，则为 **子类型**。
+
+![ts-compare](../../assets/typescript/ts-compare.png)
+
+可以看到，子类型的值可以赋值给父类型，反过来就会报错，这个机制很好理解：
+
+父类型 **string** 的范围更大，除了可以是 **Coder** 或者 **Monkey** 之外，也可以是其他一切类型为 **string** 的值，加上 **值类型** 的值又是固定不变的，你将一个不确定的 **string** 变量赋值给 **常量** 本身就是有问题的，所以，报错是必然的。
+
+因此不难得出如下结论：
+
+**父类型兼容子类型，只要是可以使用父类型的变量，子类型同样也可以使用，反之就会报错**。
+
+## type
+
+如果想要给类型起别名，可以利用 **type** 进行实现。
+
+```TypeScript
+// type User = { name: string, age: number }
+const user: { name:string, age: number } = { name: 'CoderMonkey', age: 18 }
+```
+
+上面代码为 **user** 进行了 **类型约束**，一个包含 **name** 和 **age** 的对象，试想一下，如果下次我又声明一个 **teacher** 变量也想使用这个 **类型约束** 怎么办？要么重新写一份，要么拷贝过来，在这种情况下，就显得费时费力了，因此，可以将该类型抽离出来，单独定义一个新的别名，下次直接使用定义的别名类型即可。
+
+```TypeScript
+type Person = { name: string, age: number }
+
+const user: Person = { name: 'CoderMonkey', age: 18 }
+const teacher: Person = { name: 'CoderMonkey Teacher', age: 19 }
+const student: Person = { name: 'CoderMonkey student', age: 8 }
+```
+
+这样使用是不是就显得非常灵活了，同时也可以提升代码的可读性和可维护性。
+
+需要明确的是，无法使用 **type** 同时定义两个同名 **Type**
+![ts-type-same-error](../../assets/typescript/ts-type-same-error.png)
 
 ## typeof
 
-## type
+在 **JavaScript** 中，**typeof** 用于获取值的类型，其结果是一个字符串，如：
+
+![ts-typeof-js](../../assets/typescript/ts-typeof-js.png)
+
+在 **TypeScript** 中，除了获取变量的类型之外，还可以将获取到的变量类型赋值给新的 **Type**
+
+```TypeScript
+type Person = {
+    name: string,
+    age: number
+}
+
+const user:Person = {
+    name: 'CoderMonkey',
+    age: 18
+}
+
+console.log(typeof user.name)
+
+type NameType = typeof user.name
+type AgeType = typeof user.age
+```
+
+需要明确的是：**typeof** 后面的参数只能是一个 **值**，而不能是一个类型。

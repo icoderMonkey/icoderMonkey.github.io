@@ -4,9 +4,9 @@ import { defineConfig } from "vitepress";
 export default defineConfig({
   title: "CoderMonkey",
   description: "Learning Roadmaps",
-  head: [["link", { rel: "icon", href: "/assets/img/favicon.ico" }]],
+  head: [["link", { rel: "icon", href: "/favicon.ico" }]],
   themeConfig: {
-    logo: "/assets/img/sakuragi.png",
+    logo: "/sakuragi.png",
     // https://vitepress.dev/reference/default-theme-config
     nav: [
       { text: "主页", link: "/" },

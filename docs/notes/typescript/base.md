@@ -281,6 +281,31 @@ const student: Person = { name: 'CoderMonkey student', age: 8 }
 需要明确的是，无法使用 **type** 同时定义两个同名 **Type**
 ![ts-type-same-error](../../assets/typescript/ts-type-same-error.png)
 
+通过 **type** 声明的 **对象类型**，在每一个 **key:value** 后面可以写 **,** 可以写 **;** 也可以留空不写
+
+为了和 **对象字面量** 的特点保持一致，在开发中，我个人更推荐在每一个 **key:value** 后面写上 **,** 最后一个 **key:value** 后面留空，但以下三种在 **TypeScript** 中都是合法的
+
+```TypeScript
+type Person = {
+    name: string,
+    age: number
+}
+```
+
+```TypeScript
+type Person = {
+    name: string;
+    age: number
+}
+```
+
+```TypeScript
+type Person = {
+    name: string
+    age: number
+}
+```
+
 ## typeof
 
 在 **JavaScript** 中，**typeof** 用于获取值的类型，其结果是一个字符串，如：

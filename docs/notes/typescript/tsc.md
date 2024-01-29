@@ -6,7 +6,7 @@
 tsc --version
 ```
 
-![alt text](../../assets/typescript/ts-version.png)
+<!-- ![alt text](../../assets/typescript/ts-version.png) -->
 
 ## 帮助
 
@@ -14,7 +14,7 @@ tsc --version
 tsc --help
 ```
 
-![alt text](../../assets/typescript/ts-help.png)
+<!-- ![alt text](../../assets/typescript/ts-help.png) -->
 
 如需查看所有的帮助信息，可以加上 _--all_ 参数。
 
@@ -74,7 +74,7 @@ tsc --watch index.ts
 
 执行上述命令后，会开启一个新的进程用于监视 _index.ts_ 代码的变化。
 
-![alt text](../../assets/typescript/ts-w-file.png)
+<!-- ![alt text](../../assets/typescript/ts-w-file.png) -->
 
 监视当前目录中所有 _.ts_ 文件的变化
 
@@ -96,7 +96,18 @@ tsc --init
 
 会生成包含如下默认配置的 _tsconfig.json_ 文件，点击该文件会发现除默认配置项之外，其余的配置都已经被注释掉了，并且在每个配置项后面都会有注释进行说明，可以很轻易的知道每个配置项的具体作用。
 
-![alt text](../../assets/typescript/ts-config.png)
+<!-- ![alt text](../../assets/typescript/ts-config.png) -->
+
+```bash
+Created a new tsconfig.json with:
+
+  target: es2016
+  module: commonjs
+  strict: true
+  esModuleInterop: true
+  skipLibCheck: true
+  forceConsistentCasingInFileNames: true
+```
 
 需要提及的是，如果有该配置文件存在，当你要编译项目中所有的 _.ts_ 文件可以直接执行 `tsc`；如果要监视项目中所有 _.ts_ 文件的变化可以直接执行 `tsc --watch`，因为 _tsc_ 会自动读取你的配置文件。
 

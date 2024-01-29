@@ -12,7 +12,13 @@ let userName:string = "CoderMonkey"
 
 通过 **string** 类型约束后的 **userName**，意味着在赋值时变量值的类型只能为 **相同类型** 或者为 **该类型的子集**（**相同类型** 很好理解，**类型子集** 后面会详解），否则编译器就会报错。
 
-![Bsase-Demo](../../assets/typescript/ts-base-demo.png)
+<!-- ![Bsase-Demo](../../assets/typescript/ts-base-demo.png) -->
+
+```TypeScript
+let userName:string = "CoderMonkey"
+
+userName = 123  // Type 'number' is not assignable to type 'string'. // [!code error]
+```
 
 ## string
 
@@ -112,7 +118,16 @@ console.log(userAge.toFixed(2))
 
 由于 **any** 类型的值可以赋值给任意类型的变量，因此上面这段代码在 **TypeScript** 的环境中是不会报错的，这就对 **userAge** 的类型造成了 **污染**，当你尝试运行这段代码就会发现如下错误：
 
-![ts-any-error](../../assets/typescript/ts-any-error.png)
+<!-- ![ts-any-error](../../assets/typescript/ts-any-error.png) -->
+
+```TypeScript
+let userName:any = 'CoderMonkey'
+let userAge: number = 18
+
+userAge = userName
+
+console.log(userAge.toFixed(2))  // userAge.toFixed is not a function // [!code error]
+```
 
 因此，非必要条件下，应当尽量避免使用 **any** 类型。
 
@@ -138,15 +153,48 @@ userAge = "99"
 
 与 **any** 类型 **不同** 的是，不可以将类型为 **unknown** 类型的值赋值给其他类型的变量。
 
-![ts-unknown-error](../../assets/typescript/ts-unknown-error.png)
+<!-- ![ts-unknown-error](../../assets/typescript/ts-unknown-error.png) -->
+
+```TypeScript
+let userName:unknown = "CoderMonkey"
+let userAge: number = 18
+
+userAge = userName  // Type 'unknown' is not assignable to type 'number' // [!code error]
+```
 
 其次，设置为 **unknown** 类型的值 **不提供任何可用的属性和方法** ，即使该值本身或原型上已经存在。
 
-![ts-unknown-error-1](../../assets/typescript/ts-unknown-error-1.png)
+<!-- ![ts-unknown-error-1](../../assets/typescript/ts-unknown-error-1.png) -->
+
+```TypeScript
+let person = {
+    age: 18,
+    sayHello: () => console.log("Hello")
+}
+person.sayHello()
+person.toString()
+
+let user:unknown = person
+user.sayHello()  // 'user' is of type 'unknown' // [!code error]
+user.toString()  // 'user' is of type 'unknown' // [!code error]
+user.age = 20    // 'user' is of type 'unknown' // [!code error]
+```
 
 再者，**unknown** 类型只能进行比较运算，如：==、===、!=、!==、||、&&、?、! 等等。
 
-![ts-unknown-error-2](../../assets/typescript/ts-unknown-error-2.png)
+<!-- ![ts-unknown-error-2](../../assets/typescript/ts-unknown-error-2.png) -->
+
+```TypeScript
+let userName:unknown = "CoderMonkey"
+
+console.log(userName === "CoderMonkey")
+console.log(userName.length)  // 'userName' is of type 'unknown' // [!code error]
+
+// 类型缩小
+if (typeof userName === "string") {
+    console.log(userName.length)
+}
+```
 
 在上面的例子中，如果对 **unknown** 类型的值进行比较运算，那么一切正常；倘若直接使用字符串的属性，编译就会报错。
 
@@ -227,11 +275,34 @@ let fullName: { firstName: string } & { lastName: string } = { firstName: 'Coder
 
 使用 **const** 声明，赋值为字符串的值被推断为 **值类型**。
 
-![ts-infer-const-base](../../assets/typescript/ts-infer-const-base.png)
+<!-- ![ts-infer-const-base](../../assets/typescript/ts-infer-const-base.png) -->
+
+```TypeScript{1}
+const userName = "CoderMonkey"
+
+// 推断为
+const userName: "CoderMonkey" = "CoderMonkey"
+```
 
 使用 **const** 声明，赋值为对象的值被推断为包含 **相应属性** 的 **对象类型**。
 
-![ts-infer-const-obj](../../assets/typescript/ts-infer-const-obj.png)
+<!-- ![ts-infer-const-obj](../../assets/typescript/ts-infer-const-obj.png) -->
+
+```TypeScript
+const user = {
+    name: "CoderMonkey",
+    age: 18
+}
+
+// 推断为
+const user: {
+    name: string;
+    age: number;
+} = {
+    name: "CoderMonkey",
+    age: 18
+}
+```
 
 在 **TypeScript** 中，**类型约束** 不是必须的，可以加，也可以不加，如果是一些基本类型的值比如 **string**、**number** 往往可以利用 **类型推断** 的机制省略不写；但如果是一些非常复杂的数据类型，**TypeScript** 就不能保证可以一定可以推断出正确的数据类型了，因此，在大型项目的复杂场景下，显示的 **类型约束** 就显得极为重要了。
 
@@ -240,14 +311,23 @@ let fullName: { firstName: string } & { lastName: string } = { firstName: 'Coder
 **类型兼容** 主要是指不同类型之间的兼容关系，通常会发生在类型的 **包含关系** 中。
 
 ```TypeScript
-let firstName:'Coder' = 'Coder'
-let lastName:'Monkey' = 'Monkey'
-let fullName:string = 'CoderMonkey'
+let firstName:"Coder" = "Coder"
+let lastName:'Monkey' = "Monkey"
+let fullName:string = "CoderMonkey"
 ```
 
 上面这段代码中，**firstName** 和 **lastName** 都被具体的 **值类型** 加以约束，意味着我只能赋值为这个具体的值，好比说写死了两个不能改变的 **常量**；而下面的 **fullName** 通过 **string** 进行约束，意味着只要值的类型满足 **string** 类型，就可以赋值给它，因此，**string** 相比于 **值类型** 而言具有更广的范围，简单的说，就是 **string** 类型包含了 **值为字符串的值类型**，**string** 是 **值为字符串的值类型** 的父类型，反之，则为 **子类型**。
 
-![ts-compare](../../assets/typescript/ts-compare.png)
+<!-- ![ts-compare](../../assets/typescript/ts-compare.png) -->
+
+```TypeScript
+let firstName:"Coder" = "Coder"
+let lastName:'Monkey' = "Monkey"
+let fullName:string = "CoderMonkey"
+
+fullName = firstName
+firstName = fullName  // Type 'string' is not assignable to type '"Coder"'.// [!code error]
+```
 
 可以看到，子类型的值可以赋值给父类型，反过来就会报错，这个机制很好理解：
 
@@ -263,7 +343,7 @@ let fullName:string = 'CoderMonkey'
 
 ```TypeScript
 // type User = { name: string, age: number }
-const user: { name:string, age: number } = { name: 'CoderMonkey', age: 18 }
+const user: { name:string, age: number } = { name: "CoderMonkey", age: 18 }
 ```
 
 上面代码为 **user** 进行了 **类型约束**，一个包含 **name** 和 **age** 的对象，试想一下，如果下次我又声明一个 **teacher** 变量也想使用这个 **类型约束** 怎么办？要么重新写一份，要么拷贝过来，在这种情况下，就显得费时费力了，因此，可以将该类型抽离出来，单独定义一个新的别名，下次直接使用定义的别名类型即可。
@@ -271,15 +351,21 @@ const user: { name:string, age: number } = { name: 'CoderMonkey', age: 18 }
 ```TypeScript
 type Person = { name: string, age: number }
 
-const user: Person = { name: 'CoderMonkey', age: 18 }
-const teacher: Person = { name: 'CoderMonkey Teacher', age: 19 }
-const student: Person = { name: 'CoderMonkey student', age: 8 }
+const user: Person = { name: "CoderMonkey", age: 18 }
+const teacher: Person = { name: "CoderMonkey Teacher", age: 19 }
+const student: Person = { name: "CoderMonkey student", age: 8 }
 ```
 
 这样使用是不是就显得非常灵活了，同时也可以提升代码的可读性和可维护性。
 
 需要明确的是，无法使用 **type** 同时定义两个同名 **Type**
-![ts-type-same-error](../../assets/typescript/ts-type-same-error.png)
+
+<!-- ![ts-type-same-error](../../assets/typescript/ts-type-same-error.png) -->
+
+```TypeScript
+type User = { name: string, age: number }  // Duplicate identifier 'User'. // [!code error]
+type User = { height: number }             // Duplicate identifier 'User'. // [!code error]
+```
 
 通过 **type** 声明的 **对象类型**，在每一个 **key:value** 后面可以写 **,** 可以写 **;** 也可以留空不写
 
@@ -310,7 +396,11 @@ type Person = {
 
 在 **JavaScript** 中，**typeof** 用于获取值的类型，其结果是一个字符串，如：
 
-![ts-typeof-js](../../assets/typescript/ts-typeof-js.png)
+<!-- ![ts-typeof-js](../../assets/typescript/ts-typeof-js.png) -->
+
+```TypeScript{1}
+console.log(typeof "CoderMonkey")  // string
+```
 
 在 **TypeScript** 中，除了获取变量的类型之外，还可以将获取到的变量类型赋值给新的 **Type**
 

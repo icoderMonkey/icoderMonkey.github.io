@@ -5,7 +5,7 @@ layout: home
 hero:
   name: "TypeScript"
   text: "学习小册"
-  tagline: TypeScrit 从入门到进阶
+  tagline: TypeScript 从入门到进阶
   actions:
     - theme: brand
       text: 快速开始

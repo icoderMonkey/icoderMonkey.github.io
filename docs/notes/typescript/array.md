@@ -88,16 +88,51 @@ type T3 = Array<Person>[number]
 
 假设没有给数组添加 **类型约束**，只是默认赋值了一个空数组，此时会推断为 **any[]**。
 
-![ts-array-infer-1](../../assets/typescript/ts-array-infer-1.png)
+<!-- ![ts-array-infer-1](../../assets/typescript/ts-array-infer-1.png) -->
+
+```TypeScript{1}
+const arr = []
+
+// 推断为
+const arr: any[] = []
+```
 
 此时，可以往该数组中添加任意类型的元素，随着添加元素类型的不同，最后会推断出一个由这些元素类型组成的联合类型的数组类型。
 
-![ts-array-infer-2](../../assets/typescript/ts-array-infer-2.png)
-![ts-array-infer-3](../../assets/typescript/ts-array-infer-3.png)
+<!-- ![ts-array-infer-2](../../assets/typescript/ts-array-infer-2.png) -->
+
+```TypeScript
+const arr = []
+arr.push(1)
+
+// 推断为 number[]
+type A = typeof arr // type A = typeof number[]
+```
+
+<!-- ![ts-array-infer-3](../../assets/typescript/ts-array-infer-3.png) -->
+
+```TypeScript
+const arr = []
+arr.push(1)
+arr.push("1")
+arr.push(Symbol())
+
+// 推断为 (string | number |symbol)[]
+type A = typeof arr // type A = typeof (string | number |symbol)[]
+```
 
 如果默认情况下，赋值了一个包含元素的非空数组，那么会根据元素的类型推断出具体的类型，如果添加的元素类型与推断类型不符合便会报错。
 
-![ts-array-infer-4](../../assets/typescript/ts-array-infer-4.png)
+<!-- ![ts-array-infer-4](../../assets/typescript/ts-array-infer-4.png) -->
+
+```TypeScript
+const arr = [1]
+
+// 推断为 number[]
+type A = typeof arr // type A = typeof number[]
+
+arr.push("1")  // Argument of type 'string' is not assignable to parameter of type 'number' // [!code error]
+```
 
 ## 只读数组
 
@@ -127,4 +162,11 @@ const arr:Readonly<Array<number>> = [1, 2, 3, 4]
 
 **as** 用于表示将数据断言为某个具体的类型，以跳过类型检查的目的，这里先提一下，后面会有专门的部分进行说明。
 
-![ts-array-infer-5](../../assets/typescript/ts-array-infer-5.png)
+<!-- ![ts-array-infer-5](../../assets/typescript/ts-array-infer-5.png) -->
+
+```TypeScript
+const arr = [1, 2, 3, 4, 5] as const
+
+// 推断为
+const arr: readonly [1, 2, 3, 4, 5] = [1, 2, 3, 4, 5]
+```

@@ -108,7 +108,7 @@ userAge = "99"
 除此之外，**any** 类型还有一个很严重的问题，就是 **类型污染**，即类型为 **any** 的变量值可以赋值给其他任意类型的变量，如：
 
 ```TypeScript
-let userName:any = 'CoderMonkey'
+let userName:any = "CoderMonkey"
 let userAge: number = 18
 
 userAge = userName
@@ -121,7 +121,7 @@ console.log(userAge.toFixed(2))
 <!-- ![ts-any-error](../../assets/typescript/ts-any-error.png) -->
 
 ```TypeScript
-let userName:any = 'CoderMonkey'
+let userName:any = "CoderMonkey"
 let userAge: number = 18
 
 userAge = userName
@@ -210,7 +210,7 @@ if (typeof userName === "string") {
 
 ```TypeScript
 function throwError(): never {
-  throw new Error('error')
+  throw new Error("error")
 }
 ```
 
@@ -219,7 +219,7 @@ function throwError(): never {
 ```TypeScript
 function keepProcessing(): never {
   while (true) {
-    console.log('keepProcessing')
+    console.log("keepProcessing")
   }
 }
 ```
@@ -231,7 +231,7 @@ function keepProcessing(): never {
 一个具体的值，在 **TypeScript** 中就可以算做 **值类型**
 
 ```TypeScript
-let userName:'CoderMonkey' = 'CoderMonkey'
+let userName:"CoderMonkey" = "CoderMonkey"
 ```
 
 变量 **userName** 的类型为值类型 **CoderMonkey**，这意味着 **userName** 的值只能为 **CoderMonkey**，不能是其他任意类型的值；在 **TypeScript** 环境中编码时会有非常明确的代码提示。
@@ -239,7 +239,7 @@ let userName:'CoderMonkey' = 'CoderMonkey'
 这种情况就等同于通过 **const** 声明了 **userName** 变量，并且值为 **CoderMonkey**
 
 ```TypeScript
-const userName = 'CoderMonkey'
+const userName = "CoderMonkey"
 ```
 
 ## 联合类型
@@ -264,7 +264,7 @@ flag = 0
 将多个不同的类型通过 **&** 联合起来组成一个新类型，这种方式称之为 **交叉类型（Intersection Type）**
 
 ```TypeScript
-let fullName: { firstName: string } & { lastName: string } = { firstName: 'Coder', lastName: 'Monkey'}
+let fullName: { firstName: string } & { lastName: string } = { firstName: "Coder", lastName: "Monkey"}
 ```
 
 变量 **fullName** 的类型实际上是一个 **object**，但这个 **object** 需要同时包含 **firstName** 属性和 **lastName** 属性，简单的说，利用 **&** 就是将多个对象类型进行 **合并** 成一个满足他们所有对象约束的新类型。
@@ -312,7 +312,7 @@ const user: {
 
 ```TypeScript
 let firstName:"Coder" = "Coder"
-let lastName:'Monkey' = "Monkey"
+let lastName:"Monkey" = "Monkey"
 let fullName:string = "CoderMonkey"
 ```
 
@@ -322,7 +322,7 @@ let fullName:string = "CoderMonkey"
 
 ```TypeScript
 let firstName:"Coder" = "Coder"
-let lastName:'Monkey' = "Monkey"
+let lastName:"Monkey" = "Monkey"
 let fullName:string = "CoderMonkey"
 
 fullName = firstName
@@ -411,7 +411,7 @@ type Person = {
 }
 
 const user:Person = {
-    name: 'CoderMonkey',
+    name: "CoderMonkey",
     age: 18
 }
 

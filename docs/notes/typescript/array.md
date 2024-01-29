@@ -24,9 +24,9 @@ const arr: string|number[] = []
 
 ```TypeScript
 const data = [
-  { id: 1, name: 'CoderMonkey-1', age: 18 },
-  { id: 2, name: 'CoderMonkey-2', age: 19 },
-  { id: 3, name: 'CoderMonkey-3', age: 20 }
+  { id: 1, name: "CoderMonkey-1", age: 18 },
+  { id: 2, name: "CoderMonkey-2", age: 19 },
+  { id: 3, name: "CoderMonkey-3", age: 20 }
 ]
 ```
 
@@ -82,7 +82,7 @@ type T3 = Array<Person>[number]
 
 **`Array<Person>[0]`** 表示访问数组类型 **`Array<Person>`** 中第 **0** 个元素的类型，并赋值给 **T2**。
 
-**`Array<Person>[number]`** 表示访问数组类型 **`Array<Person>`** 中第任意个元素的类型，由于数组的下标作为属性在通过 **[]** 形式访问时的类型都是 **number**, 因此，可以直接传入 **number** 类型（注意是 **number** 类型，而不是字符串 **'number'** 哟）从而访问到数组中任意元素的类型，并赋值给 **T3**。
+**`Array<Person>[number]`** 表示访问数组类型 **`Array<Person>`** 中第任意个元素的类型，由于数组的下标作为属性在通过 **[]** 形式访问时的类型都是 **number**, 因此，可以直接传入 **number** 类型（注意是 **number** 类型，而不是字符串 **"number"** 哟）从而访问到数组中任意元素的类型，并赋值给 **T3**。
 
 ## 类型推断
 

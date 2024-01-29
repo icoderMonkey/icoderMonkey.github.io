@@ -92,7 +92,7 @@ tuple = ["Coder Monkey", 19]
 ## 只读元组的泛型表示
 
 ```TypeScript
-const turple: Readonly<[string, number]> = ["CoderMonkey", 18]
+const tuple: Readonly<[string, number]> = ["CoderMonkey", 18]
 ```
 
 **Array** 一节提到过 **`Readonly<T>`** 是泛型中的只读表示，**T** 可以是任意类型，可以是 **string**，可以是 **number**，这里传入了 **[string, number]** 就表示它是一个只读元组。

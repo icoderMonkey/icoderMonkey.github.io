@@ -27,6 +27,7 @@ export default defineConfig({
           { text: "类型基础", link: "/notes/typescript/base" },
           { text: "数组", link: "/notes/typescript/array" },
           { text: "元组", link: "/notes/typescript/tuple" },
+          { text: "函数", link: "/notes/typescript/function" },
         ],
       },
     ],

@@ -84,7 +84,11 @@ tsc --watch ./*.ts
 
 执行上述命令后，会开启一个新的进程用于监视当前目录下所有 _index.ts_ 代码的变化。
 
-作为初学者而言，以上指令可能会比较常用一些，但随着项目的复杂度逐渐提升，关于参数的配置可能也会越来越繁琐，因此单单通过命令行来处理参数就显得愈发无力了；此时就可以抛开命令行单独为项目添加 _tsconfig.json_ 这样的配置文件来进行处理，省时且高效，有关于更多的配置项，可以通过 _tsc --help --all_ 来进行查阅
+作为初学者而言，以上指令可能会比较常用一些，但随着项目的复杂度逐渐提升，关于参数的配置可能也会越来越繁琐，因此单单通过命令行来处理参数就显得愈发无力了；此时就可以抛开命令行单独为项目添加 _tsconfig.json_ 这样的配置文件来进行处理，省时且高效，有关于更多的配置项，可以通过 _tsc --help --all_ 来进行查阅。
+
+## 更多 tsc 配置
+
+https://www.typescriptlang.org/docs/handbook/compiler-options.html
 
 ## 配置文件
 
@@ -120,6 +124,10 @@ Created a new tsconfig.json with:
   }
 }
 ```
+
+## 更多参数配置
+
+https://www.typescriptlang.org/tsconfig
 
 ## 案例
 

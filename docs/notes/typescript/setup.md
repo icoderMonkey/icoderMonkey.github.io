@@ -2,6 +2,14 @@
 
 ![Static Badge](https://img.shields.io/badge/nodejs-v20.11.4-blue)
 
+## 链接
+
+NodeJs 官网：https://nodejs.org/en
+
+TypeScript 官网：https://www.typescriptlang.org/
+
+TypeScript Playground：https://www.typescriptlang.org/play
+
 ## 全局安装
 
 ```bash
@@ -24,7 +32,7 @@ tsc -v
 
 ## 初始化
 
-随便创建一个空目录，我这里直接是 _ts_ 目录，接着执行以下命令来初始化一个新的项目
+随便创建一个空目录，我这里直接是 _ts_ 目录，接着执行以下命令来初始化一个新的项目。
 
 ```bash
 cd ts
@@ -37,7 +45,7 @@ npm init -y
 npm install typescript @types/node -D
 ```
 
-创建 _main.ts_ 文件并写入以下内容
+创建 _main.ts_ 文件并写入以下内容。
 
 ```typescript
 const firstName = "Coder";
@@ -46,7 +54,7 @@ const fullName = firstName + lastName;
 console.log(fullName); // CoderMonkey
 ```
 
-当前目录结构如下所示
+当前目录结构
 
 ```md
 .

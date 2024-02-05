@@ -28,6 +28,7 @@ export default defineConfig({
           { text: "数组", link: "/notes/typescript/array" },
           { text: "元组", link: "/notes/typescript/tuple" },
           { text: "函数", link: "/notes/typescript/function" },
+          { text: "对象", link: "/notes/typescript/object" },
         ],
       },
     ],

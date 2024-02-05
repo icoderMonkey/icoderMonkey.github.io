@@ -1,16 +1,14 @@
 # 数组
 
-<!-- 在 **TypeScript** 中，数组中的元素通常会使用类型加以约束，以保证元素具有相同的特征。 -->
-
 ## 声明
 
 ```TypeScript
 const arr: string[] = []
 ```
 
-变量 **arr** 被类型 **string[ ]** 进行约束，表征它是一个数组类型；**string** 表示数组中的元素类型均为 **string** 类型，而 **[ ]** 表示该变量是一个数组类型。
+变量 _arr_ 被类型 **string[ ]** 进行约束，表征它是一个数组类型；**string** 表示数组中的元素类型均为 **string** 类型。
 
-如果你希望可以在 **arr** 数组中同时存入 **number** 类型的数据，那么可以使用 **联合类型**。
+如果你希望可以在 **arr** 数组中同时存入 **number** 类型的数据，那么可以使用 “联合类型”。
 
 ```TypeScript
 const arr: string|number[] = []
@@ -20,7 +18,7 @@ const arr: string|number[] = []
 
 ## 案例
 
-在实际开发中，很多关于 **list** 的数据都会通过接口请求进行获取，而这部分数据，通常又会保持相同的数据结构，如：
+在实际开发中，很多关于 _list_ 的数据都会通过接口请求进行获取，而这部分数据，通常又会保持相同的数据结构，如：
 
 ```TypeScript
 const data = [
@@ -30,7 +28,7 @@ const data = [
 ]
 ```
 
-这是一个用户列表，当前端拿到数据后会保存在 **store** 里并在页面中进行渲染，在存储时我们就可以根据这个结构编出通过类型约束的 **TypeScript** 代码。
+假设它是一个用户列表，当前端拿到数据后会保存在 `store` 中并在页面上进行渲染，在赋值时我们就可以根据这个结构编出通过类型约束的 **TypeScript** 代码。
 
 ```TypeScript
 type Person = {
@@ -42,7 +40,7 @@ type Person = {
 const list:Person[] = data
 ```
 
-在开发时，通过 **类型约束**，我们可以很轻易的在 **IDE** 中获取该类型和数据源中属性和方法的快捷提示。
+在开发时，通过 “类型约束”，我们可以很轻易的在编辑器中获取该类型和数据源中属性和方法的快捷提示。
 
 ## 数组的泛型表示
 
@@ -62,7 +60,7 @@ const list:Array<Person> = data
 
 ## 访问成员类型
 
-通过 **数组类型** 来访问成员类型。
+通过 “数组类型” 来访问成员类型。
 
 ```TypeScript
 type Person = {
@@ -76,17 +74,17 @@ type T2 = Array<Person>[0]
 type T3 = Array<Person>[number]
 ```
 
-以上代码中的 **T1**、**T2**、**T3** 均表示相同的类型 **Person**，一下是具体分析分析：
+以上代码中的 _T1_、_T2_、_T3_ 均表示相同的类型 **Person**，以下是具体分析：
 
-**Person[][0]** 表示访问数组类型 **Person[]** 中第 **0** 个元素的类型，并赋值给 **T1**。
+**`Person[][0]`** 表示访问数组类型 **Person[]** 中第 **0** 个元素的类型，并赋值给 **T1**；
 
-**`Array<Person>[0]`** 表示访问数组类型 **`Array<Person>`** 中第 **0** 个元素的类型，并赋值给 **T2**。
+**`Array<Person>[0]`** 表示访问数组类型 **`Array<Person>`** 中第 **0** 个元素的类型，并赋值给 **T2**；
 
-**`Array<Person>[number]`** 表示访问数组类型 **`Array<Person>`** 中第任意个元素的类型，由于数组的下标作为属性在通过 **[]** 形式访问时的类型都是 **number**, 因此，可以直接传入 **number** 类型（注意是 **number** 类型，而不是字符串 **"number"** 哟）从而访问到数组中任意元素的类型，并赋值给 **T3**。
+**`Array<Person>[number]`** 表示访问数组类型 **`Array<Person>`** 中第任意个元素的类型，由于数组的下标作为属性在通过 **[ ]** 形式访问时的类型都是 **number**, 因此，可以直接传入 **number** 类型（注意是 **number** 类型，而不是字符串 **"number"** 哟）从而访问到数组中任意元素的类型，并赋值给 **T3**。
 
 ## 类型推断
 
-假设没有给数组添加 **类型约束**，只是默认赋值了一个空数组，此时会推断为 **any[]**。
+假设没有给数组添加 “类型约束”，只是默认赋值了一个空数组，会自动推断为 **any[]**。
 
 <!-- ![ts-array-infer-1](../../assets/typescript/ts-array-infer-1.png) -->
 
@@ -97,9 +95,7 @@ const arr = []
 const arr: any[] = []
 ```
 
-此时，可以往该数组中添加任意类型的元素，随着添加元素类型的不同，最后会推断出一个由这些元素类型组成的联合类型的数组类型。
-
-<!-- ![ts-array-infer-2](../../assets/typescript/ts-array-infer-2.png) -->
+此时，可以往该数组中添加任意类型的元素，随着添加元素类型的不同，最后会推断出一个由这些元素类型组成的 “联合类型” 的数组类型。
 
 ```TypeScript
 const arr = []
@@ -108,8 +104,6 @@ arr.push(1)
 // 推断为 number[]
 type A = typeof arr // type A = typeof number[]
 ```
-
-<!-- ![ts-array-infer-3](../../assets/typescript/ts-array-infer-3.png) -->
 
 ```TypeScript
 const arr = []
@@ -121,9 +115,7 @@ arr.push(Symbol())
 type A = typeof arr // type A = typeof (string | number |symbol)[]
 ```
 
-如果默认情况下，赋值了一个包含元素的非空数组，那么会根据元素的类型推断出具体的类型，如果添加的元素类型与推断类型不符合便会报错。
-
-<!-- ![ts-array-infer-4](../../assets/typescript/ts-array-infer-4.png) -->
+默认情况下，如果赋值了一个包含元素的 “非空数组”，**TypeScript** 会自动根据元素的类型推断出具体的类型，唐拓添加的元素类型与推断类型不符便会报错。
 
 ```TypeScript
 const arr = [1]
@@ -136,7 +128,7 @@ arr.push("1")  // Argument of type 'string' is not assignable to parameter of ty
 
 ## 只读数组
 
-通过 **readonly** 关键字表明该数组 **只读**，对 **只读数组** 的 **增**、**删**、**改** 都会报错。
+通过 **readonly** 关键字表明该数组 “只读”，对 “只读数组” 的 “增”、“删”、“改” 都会报错。
 
 ```TypeScript
 const arr:readonly number[] = [1, 2, 3, 4]
